@@ -1,0 +1,2 @@
+C:\Users\yoni\Documents\GalacticGlum\Tutorials\2DGameEngine\2DGameEngine\bin\Debug\2DGameEngine.exe.config
+C:\Users\yoni\Documents\GalacticGlum\Tutorials\2DGameEngine\2DGameEngine\bin\Debug\GlumEngine2D.exe.config
