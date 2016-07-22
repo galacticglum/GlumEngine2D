@@ -10,8 +10,18 @@ namespace GlumEngine2D
     {
         public TestGame(int width, int height, string title) : base(width, height, title) { }
 
+        private Mesh2D mesh2d;
+
         protected override void Initialize()
         {
+            Vertex[] vertices = new Vertex[]
+            {
+                new Vertex(-1f, -1f),
+                new Vertex(1f, -1f),
+                new Vertex(0f, 1f),
+            };
+
+            mesh2d = new Mesh2D(vertices);
         }
 
         protected override void Update()
@@ -21,7 +31,7 @@ namespace GlumEngine2D
 
         protected override void Render()
         {
-            base.Update();
+            mesh2d.Draw();
         }
 
         protected override void Shutdown()
