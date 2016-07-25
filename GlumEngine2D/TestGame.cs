@@ -11,9 +11,11 @@ namespace GlumEngine2D
         public TestGame(int width, int height, string title) : base(width, height, title) { }
 
         private Mesh2D mesh2d;
+        private Shader shader;
 
         protected override void Initialize()
         {
+            shader = new Shader("Resources/Shader/vertex.shader", "Resources/Shader/fragment.shader");
             Vertex[] vertices = new Vertex[]
             {
                 new Vertex(-1f, -1f),
@@ -31,7 +33,9 @@ namespace GlumEngine2D
 
         protected override void Render()
         {
+            shader.Start();
             mesh2d.Draw();
+            shader.Stop();
         }
 
         protected override void Shutdown()
