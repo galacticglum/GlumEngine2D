@@ -31,7 +31,7 @@ namespace GlumEngine2D
         protected override void OnLoad(EventArgs e)
         {
             Initialize();
-            RenderingSystem.Initialize(1);
+            RenderingSystem.Initialize();
         }
 
         protected override void OnUpdateFrame(FrameEventArgs e)

@@ -6,16 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 
 using OpenTK.Graphics.OpenGL4;
+using OpenTK;
 
 namespace GlumEngine2D
 {
     public class Shader
     {
         private int programID;
+        private Dictionary<string, int> uniforms;
 
         public Shader(string vertexFileName, string fragmentFileName)
         {
             programID = GL.CreateProgram();
+            uniforms = new Dictionary<string, int>();
 
             if (programID == 0)
             {
@@ -26,7 +29,6 @@ namespace GlumEngine2D
             AddShader(vertexFileName, ShaderType.VertexShader);
             AddShader(fragmentFileName, ShaderType.FragmentShader);
             CompileShader();
-
         }
 
         private void AddShader(string fileName, ShaderType type)
@@ -85,7 +87,66 @@ namespace GlumEngine2D
         public void Stop()
         {
             GL.UseProgram(0);
+        }    
+        
+        public void AddUniform(string uniformName)
+        {
+            int uniform = GetUniformLocation(uniformName);
+            if (uniform == -1)
+            {
+                Console.WriteLine("Could not find uniform: " + uniformName + "!");
+                Environment.Exit(1);
+            }
+            uniforms.Add(uniformName, uniform);
+        } 
+
+        private int GetUniformLocation(string uniformName)
+        {
+            return GL.GetUniformLocation(programID, uniformName);
         }
+
+        #region Uniform Loading
+        public void LoadInt(string uniformName, int value)
+        {
+            GL.Uniform1(uniforms[uniformName], value);
+        }
+
+        public void LoadFloat(string uniformName, float value)
+        {
+            GL.Uniform1(uniforms[uniformName], value);
+        }
+
+        public void LoadDouble(string uniformName, double value)
+        {
+            GL.Uniform1(uniforms[uniformName], value);
+        }
+
+        public void LoadVector(string uniformName, Vector2 value)
+        {
+            GL.Uniform2(uniforms[uniformName], value);
+        }
+
+        public void LoadVector(string uniformName, Vector3 value)
+        {
+            GL.Uniform3(uniforms[uniformName], value);
+        }
+
+        public void LoadVector(string uniformName, Vector4 value)
+        {
+            GL.Uniform4(uniforms[uniformName], value);
+        }
+
+        public void LoadBoolean(string uniformName, bool value) 
+        {
+            GL.Uniform1(uniforms[uniformName], value ? 1 : 0);
+        }
+
+        public void LoadMatrix(string uniformName, Matrix4 value)
+        {
+            GL.UniformMatrix4(uniforms[uniformName], true, ref value);
+        }
+
+        #endregion
 
         private string ReadShader(string fileName)
         {

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using OpenTK;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +17,11 @@ namespace GlumEngine2D
 
         protected override void Initialize()
         {
-            shader = new Shader("Resources/Shader/vertex.shader", "Resources/Shader/fragment.shader");
+            RenderingSystem.SetClearColour(0, 0.8f, 0.6f, 1);
+
+            shader = new Shader("Resources/Shader/vertex.glsl", "Resources/Shader/fragment.glsl");
+            shader.AddUniform("uniformColour");
+
             Vertex[] vertices = new Vertex[]
             {
                 new Vertex(-1f, -1f),
@@ -28,7 +34,20 @@ namespace GlumEngine2D
 
         protected override void Update()
         {
-            base.Update();
+            shader.Start();
+            if (Input.GetKeyDown(OpenTK.Input.Key.R))
+            {
+                shader.LoadVector("uniformColour", new Vector4(1, 0, 0, 1));
+            }
+            if (Input.GetKeyDown(OpenTK.Input.Key.G))
+            {
+                shader.LoadVector("uniformColour", new Vector4(0, 1, 0, 1));
+            }
+            if (Input.GetKeyDown(OpenTK.Input.Key.B))
+            {
+                shader.LoadVector("uniformColour", new Vector4(0, 0, 1, 1));
+            }
+            shader.Stop();
         }
 
         protected override void Render()
