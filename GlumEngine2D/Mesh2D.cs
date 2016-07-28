@@ -11,18 +11,24 @@ namespace GlumEngine2D
     public class Mesh2D
     {
         private int vboID;
+        private int iboID;
         private int size;
 
-        public Mesh2D(Vertex[] vertices)
+        public Mesh2D(Vertex[] vertices, int[] indices)
         {
             vboID = GL.GenBuffer();
-            size = vertices.Length;
+            iboID = GL.GenBuffer();
+            size = indices.Length;
 
             float[] data = Vertex.Process(vertices);
 
             GL.BindBuffer(BufferTarget.ArrayBuffer, vboID);
             GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(data.Length * sizeof(float)), data, BufferUsageHint.StaticDraw);
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, iboID);
+            GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(indices.Length * sizeof(int)), indices, BufferUsageHint.StaticDraw);
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
         }
 
         public void Draw()
@@ -31,8 +37,11 @@ namespace GlumEngine2D
 
             GL.BindBuffer(BufferTarget.ArrayBuffer, vboID);
             GL.VertexAttribPointer(0, Vertex.Size, VertexAttribPointerType.Float, false, Vertex.Size * 4, 0);
-            GL.DrawArrays(PrimitiveType.Triangles, 0, size);
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, iboID);
+            GL.DrawElements(BeginMode.Triangles, size, DrawElementsType.UnsignedInt, 0);
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
 
             GL.DisableVertexAttribArray(0);
         }

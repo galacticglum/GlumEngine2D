@@ -21,6 +21,11 @@ namespace GlumEngine2D
             GL.ClearColor(red, green, blue, alpha);
         }
 
+        public static void SetClearColour(Color colour)
+        {
+            GL.ClearColor(colour);
+        }
+
         public static void ClearScreen()
         {
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);

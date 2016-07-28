@@ -24,5 +24,6 @@ C:\Users\yoni\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\
 C:\Users\yoni\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\obj\Debug\GlumEngine2D.csprojResolveAssemblyReference.cache
 C:\Users\yoni\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\obj\Debug\GlumEngine2D.exe
 C:\Users\yoni\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\obj\Debug\GlumEngine2D.pdb
-C:\Users\yoni\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\bin\Debug\Resources\Shader\fragment.glsl
-C:\Users\yoni\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\bin\Debug\Resources\Shader\vertex.glsl
+C:\Users\yoni\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\bin\Debug\Resources\Shaders\fragment.glsl
+C:\Users\yoni\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\bin\Debug\Resources\Shaders\vertex.glsl
+C:\Users\yoni\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\bin\Debug\OpenTK.dll
