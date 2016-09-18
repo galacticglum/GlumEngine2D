@@ -14,13 +14,15 @@ namespace GlumEngine2D
 
         private Mesh2D mesh2d;
         private Shader shader;
+        private Transform transform;
 
         protected override void Initialize()
         {
             RenderingSystem.SetClearColour(Color.CornflowerBlue);
 
+            transform = new Transform();
             shader = new Shader("Resources/Shaders/vertex.glsl", "Resources/Shaders/fragment.glsl");
-            shader.AddUniform("uniformColour");
+            shader.AddUniform("transformationMatrix");
 
             Vertex[] vertices = new Vertex[]
             {
@@ -42,25 +44,21 @@ namespace GlumEngine2D
 
         protected override void Update()
         {
-            shader.Start();
-            if (Input.GetKeyDown(OpenTK.Input.Key.R))
+            if(Input.GetKey(OpenTK.Input.Key.A))
             {
-                shader.LoadVector("uniformColour", new Vector4(1, 0, 0, 1));
+                transform.Translate(-0.001f, 0);
             }
-            if (Input.GetKeyDown(OpenTK.Input.Key.G))
+
+            if(Input.GetKey(OpenTK.Input.Key.D))
             {
-                shader.LoadVector("uniformColour", new Vector4(0, 1, 0, 1));
+                transform.Translate(0.001f, 0);
             }
-            if (Input.GetKeyDown(OpenTK.Input.Key.B))
-            {
-                shader.LoadVector("uniformColour", new Vector4(0, 0, 1, 1));
-            }
-            shader.Stop();
         }
 
         protected override void Render()
         {
             shader.Start();
+            shader.LoadMatrix("transformationMatrix", transform.TransformationMatrix);
             mesh2d.Draw();
             shader.Stop();
         }
