@@ -13,7 +13,6 @@ namespace GlumEngine2D
         public static void Initialize(float red = 0.0f, float green = 0.0f, float blue = 0.0f, float alpha = 0.0f)
         {
             GL.Enable(EnableCap.DepthTest);
-            //GL.Enable(EnableCap.FramebufferSrgb);
         }
 
         public static void SetClearColour(float red = 0.0f, float green = 0.0f, float blue = 0.0f, float alpha = 0.0f)

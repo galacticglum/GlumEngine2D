@@ -11,16 +11,11 @@ namespace GlumEngine2D
     {
         public const int Size = 2;
 
-        private Vector2 position;
-        public Vector2 Position
-        {
-            get { return position; }
-            set { position = value; }
-        }
+        public Vector2 Position { get; set; }
 
         public Vertex(Vector2 position)
         {
-            this.position = position;
+            Position = position;
         }
 
         public Vertex(float x, float y) : this(new Vector2(x, y)) { }
@@ -30,10 +25,10 @@ namespace GlumEngine2D
             int count = 0;
 
             float[] data = new float[vertices.Length * Size];
-            for (int i = 0; i < vertices.Length; i++)
+            foreach (Vertex vertex in vertices)
             {
-                data[count] = vertices[i].Position.X;
-                data[count + 1] = vertices[i].Position.Y;
+                data[count] = vertex.Position.X;
+                data[count + 1] = vertex.Position.Y;
 
                 count += 2;
             }

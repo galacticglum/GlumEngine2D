@@ -9,23 +9,15 @@ namespace GlumEngine2D
 {
     public class Transform
     {
-        private Vector2 position;
-        public Vector2 Position
-        {
-            get { return position; }
-            set { position = value; }
-        }
-
-        public Matrix4 TransformationMatrix
-        {
-            get { return Matrix4.CreateTranslation(new Vector3(position.X, position.Y, 0)); }
-        }
+        public Vector2 Position { get; set; }
+        public float Rotation { get; set; }
+        public Matrix4 TransformationMatrix => CalculateTransformationMatrix();
 
         public Transform() : this(Vector2.Zero) { }
         public Transform(float x, float y) : this(new Vector2(x, y)) { }
         public Transform(Vector2 position)
         {
-            this.position = position;
+            Position = position;
         }
 
         public void Translate(float x, float y)
@@ -35,7 +27,21 @@ namespace GlumEngine2D
 
         public void Translate(Vector2 position)
         {
-            this.position += position;
+            Position += position;
+        }
+
+        public void Rotate(float rotation)
+        {
+            Rotation += rotation;
+        }
+
+        private Matrix4 CalculateTransformationMatrix()
+        {
+            Matrix4 translation = Matrix4.CreateTranslation(new Vector3(Position.X, Position.Y, 0));
+            Matrix4 rotation = Matrix4.CreateFromQuaternion(Quaternion.FromEulerAngles(Rotation, 0, 0));
+
+            Matrix4 transformationMatrix = Matrix4.Mult(rotation, translation);
+            return transformationMatrix;
         }
     }
 }

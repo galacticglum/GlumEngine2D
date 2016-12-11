@@ -12,8 +12,8 @@ namespace GlumEngine2D
 {
     public class Shader
     {
-        private int programID;
-        private Dictionary<string, int> uniforms;
+        private readonly int programID;
+        private readonly Dictionary<string, int> uniforms;
 
         public Shader(string vertexFileName, string fragmentFileName)
         {
@@ -148,7 +148,7 @@ namespace GlumEngine2D
 
         #endregion
 
-        private string ReadShader(string fileName)
+        private static string ReadShader(string fileName)
         {
             StringBuilder shader = new StringBuilder();
 

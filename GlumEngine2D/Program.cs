@@ -8,13 +8,13 @@ using OpenTK;
 
 namespace GlumEngine2D
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             using (Toolkit.Init())
             {
-                new TestGame(1200, 900, "2D Game Engine");
+                TestGame testGame = new TestGame(1200, 900, "2D Game Engine");
             }       
         }
     }

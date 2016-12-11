@@ -10,9 +10,9 @@ namespace GlumEngine2D
 {
     public class Mesh2D
     {
-        private int vboID;
-        private int iboID;
-        private int size;
+        private readonly int vboID;
+        private readonly int iboID;
+        private readonly int size;
 
         public Mesh2D(Vertex[] vertices, int[] indices)
         {

@@ -24,7 +24,7 @@ namespace GlumEngine2D
             shader = new Shader("Resources/Shaders/vertex.glsl", "Resources/Shaders/fragment.glsl");
             shader.AddUniform("transformationMatrix");
 
-            Vertex[] vertices = new Vertex[]
+            Vertex[] vertices = 
             {
                 // Sector 1
                 new Vertex(-0.5f, 0.5f),   // 0
@@ -33,7 +33,7 @@ namespace GlumEngine2D
                 new Vertex(0.5f, 0.5f),    // 3
             };
 
-            int[] indices = new int[]
+            int[] indices = 
             {
                 0, 1, 3,
                 3, 1, 2
@@ -46,12 +46,14 @@ namespace GlumEngine2D
         {
             if(Input.GetKey(OpenTK.Input.Key.A))
             {
-                transform.Translate(-0.001f, 0);
+                //transform.Translate(-0.001f, 0);
+                transform.Rotate(-0.01f);
             }
 
             if(Input.GetKey(OpenTK.Input.Key.D))
             {
-                transform.Translate(0.001f, 0);
+                //transform.Translate(0.001f, 0);
+                transform.Rotate(0.01f);
             }
         }
 
@@ -61,11 +63,6 @@ namespace GlumEngine2D
             shader.LoadMatrix("transformationMatrix", transform.TransformationMatrix);
             mesh2d.Draw();
             shader.Stop();
-        }
-
-        protected override void Shutdown()
-        {
-            base.Shutdown();
         }
     }
 }

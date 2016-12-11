@@ -3,23 +3,20 @@ using OpenTK.Input;
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GlumEngine2D
 {
     public class Input
     {
         // Key Lists
-        private static List<Key> currentKeys = new List<Key>();
-        private static List<Key> downKeys = new List<Key>();
-        private static List<Key> upKeys = new List<Key>();
+        private static readonly List<Key> currentKeys = new List<Key>();
+        private static readonly List<Key> downKeys = new List<Key>();
+        private static readonly List<Key> upKeys = new List<Key>();
 
         // Mouse Lists
-        private static List<MouseButton> currentMouseButtons = new List<MouseButton>();
-        private static List<MouseButton> downMouseButtons = new List<MouseButton>();
-        private static List<MouseButton> upMouseButtons = new List<MouseButton>();
+        private static readonly List<MouseButton> currentMouseButtons = new List<MouseButton>();
+        private static readonly List<MouseButton> downMouseButtons = new List<MouseButton>();
+        private static readonly List<MouseButton> upMouseButtons = new List<MouseButton>();
 
         internal static void Update()
         {

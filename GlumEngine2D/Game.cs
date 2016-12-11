@@ -11,19 +11,15 @@ namespace GlumEngine2D
 {
     public abstract class Game : GameWindow
     {
-        private static Game instance;
-        public static Game Instance
-        {
-            get { return instance; }
-        }
+        public static Game Instance { get; private set; }
 
-        public Game(int width, int height, string title) : base(width, height, GraphicsMode.Default, title)
+        protected Game(int width, int height, string title) : base(width, height, GraphicsMode.Default, title)
         {
-            if(instance != null)
+            if(Instance != null)
             {
                 Console.WriteLine("You should never have more than one game class!");
             }
-            instance = this;
+            Instance = this;
 
             Run();
         }
@@ -53,7 +49,6 @@ namespace GlumEngine2D
             Dispose();
         }
 
-        // Virtual methods
         protected virtual void Initialize() { }
         protected virtual void Update() { }
         protected virtual void Render() { }
