@@ -5,7 +5,7 @@ You can find the tutorial series at: http://www.youtube.com/
 
 ## Dependencies ##
 
-- [OpenTK] (http://www.opentk.com/)
+- [OpenTK] (https://opentk.github.io/)
 
 ## Build Instructions ##
 - Make sure you have dependencies installed.
