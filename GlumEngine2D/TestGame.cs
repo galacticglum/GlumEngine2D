@@ -46,14 +46,16 @@ namespace GlumEngine2D
         {
             if(Input.GetKey(OpenTK.Input.Key.A))
             {
-                //transform.Translate(-0.001f, 0);
-                transform.Rotate(-0.01f);
+                transform.Translate(-0.001f, 0);
+                //transform.Rotate(-0.01f);
+                //transform.Scale(-0.001f);
             }
 
-            if(Input.GetKey(OpenTK.Input.Key.D))
+            if (Input.GetKey(OpenTK.Input.Key.D))
             {
-                //transform.Translate(0.001f, 0);
-                transform.Rotate(0.01f);
+                transform.Translate(0.001f, 0);
+                //transform.Rotate(0.01f);
+                //transform.Scale(0.001f);
             }
         }
 

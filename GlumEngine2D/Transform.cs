@@ -11,13 +11,23 @@ namespace GlumEngine2D
     {
         public Vector2 Position { get; set; }
         public float Rotation { get; set; }
+        public Vector2 LocalScale { get; set; }
         public Matrix4 TransformationMatrix => CalculateTransformationMatrix();
 
-        public Transform() : this(Vector2.Zero) { }
-        public Transform(float x, float y) : this(new Vector2(x, y)) { }
-        public Transform(Vector2 position)
+        public Transform() : this(Vector2.Zero, 0f, Vector2.One) { }
+        public Transform(float x, float y) : this(new Vector2(x, y), 0f, Vector2.One) { }
+        public Transform(float x, float y, float rotation) : this(new Vector2(x, y), rotation, Vector2.One) { }
+        public Transform(float x, float y, float rotation, float scaleX, float scaleY) : this(new Vector2(x, y), rotation, new Vector2(scaleX, scaleY)) { }
+        public Transform(Vector2 position, float rotation, Vector2 localScale)
         {
             Position = position;
+            Rotation = rotation;
+            LocalScale = localScale;
+        }
+
+        public void Translate(float translationFactor)
+        {
+            Translate(translationFactor, translationFactor);
         }
 
         public void Translate(float x, float y)
@@ -35,12 +45,28 @@ namespace GlumEngine2D
             Rotation += rotation;
         }
 
+        public void Scale(float scaleFactor)
+        {
+            Scale(scaleFactor, scaleFactor);
+        }
+
+        public void Scale(float x, float y)
+        {
+            Scale(new Vector2(x, y));
+        }
+
+        public void Scale(Vector2 scaleFactor)
+        {
+            LocalScale += scaleFactor;
+        }
+
         private Matrix4 CalculateTransformationMatrix()
         {
             Matrix4 translation = Matrix4.CreateTranslation(new Vector3(Position.X, Position.Y, 0));
             Matrix4 rotation = Matrix4.CreateFromQuaternion(Quaternion.FromEulerAngles(Rotation, 0, 0));
+            Matrix4 scale = Matrix4.CreateScale(new Vector3(LocalScale.X, LocalScale.Y, 1));
 
-            Matrix4 transformationMatrix = Matrix4.Mult(rotation, translation);
+            Matrix4 transformationMatrix = translation * (rotation * scale);
             return transformationMatrix;
         }
     }
