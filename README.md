@@ -1,11 +1,11 @@
 # Glum Engine 2D #
 
 2D game engine by GalacticGlum for the "C# 2D Game" tutorial series.
-You can find the tutorial series at: http://www.youtube.com/
+You can find the tutorial series [here.] (https://www.youtube.com/playlist?list=PLjXePZkIYu6nVTpPdlXAjjVe2lswI6o_1)
 
 ## Dependencies ##
 
-- [OpenTK] (http://www.opentk.com/)
+- [OpenTK] (https://opentk.github.io/)
 
 ## Build Instructions ##
 - Make sure you have dependencies installed.

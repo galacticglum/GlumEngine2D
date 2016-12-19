@@ -29,6 +29,12 @@ namespace GlumEngine2D
         {
             Translate(translationFactor, translationFactor);
         }
+        
+        public Transform(Vector2 position, Vector2 rotation)
+        {
+            Position = position;
+            Rotation = rotation;
+        }
 
         public void Translate(float x, float y)
         {
