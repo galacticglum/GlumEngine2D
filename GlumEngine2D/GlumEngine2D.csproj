@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\GameEvents.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Mesh2D.cs" />

@@ -13,6 +13,18 @@ namespace GlumEngine2D
     {
         public static Game Instance { get; private set; }
 
+        protected event GameInitializedEventHandler GameInitializedEvent;
+        private void OnGameInitialized() { GameInitializedEvent?.Invoke(this); }
+
+        protected event GameUpdatedEventHandler GameUpdatedEvent;
+        private void OnGameUpdated(GameUpdatedEventArgs args) { GameUpdatedEvent?.Invoke(this, args); }
+
+        protected event GameRenderedEventHandler GameRenderedEvent;
+        private void OnGameRendered() { GameRenderedEvent?.Invoke(this); }
+
+        protected event GameClosedEventHandler GameClosedEvent;
+        private void OnGameClosed() { GameClosedEvent?.Invoke(this); }
+
         protected Game(int width, int height, string title) : base(width, height, GraphicsMode.Default, title)
         {
             if(Instance != null)
@@ -20,38 +32,31 @@ namespace GlumEngine2D
                 Console.WriteLine("You should never have more than one game class!");
             }
             Instance = this;
-
-            Run();
         }
 
         protected override void OnLoad(EventArgs e)
         {
-            Initialize();
             RenderingSystem.Initialize();
+            OnGameInitialized();
         }
 
         protected override void OnUpdateFrame(FrameEventArgs e)
         {
             Input.Update();
-            Update();
+            OnGameUpdated(new GameUpdatedEventArgs((float)e.Time));
         }
 
         protected override void OnRenderFrame(FrameEventArgs e)
         {
             RenderingSystem.ClearScreen();
-            Render();
+            OnGameRendered();
             SwapBuffers();
         }
 
         protected override void OnClosed(EventArgs e)
         {           
-            Shutdown();
+            OnGameClosed();
             Dispose();
         }
-
-        protected virtual void Initialize() { }
-        protected virtual void Update() { }
-        protected virtual void Render() { }
-        protected virtual void Shutdown() { }
     }
 }

@@ -2,21 +2,25 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GlumEngine2D
 {
     public class TestGame : Game
     {
-        public TestGame(int width, int height, string title) : base(width, height, title) { }
-
         private Mesh2D mesh2d;
         private Shader shader;
         private Transform transform;
 
-        protected override void Initialize()
+        public TestGame(int width, int height, string title) : base(width, height, title)
+        {
+            GameInitializedEvent += Initialize;
+            GameUpdatedEvent += Update;
+            GameRenderedEvent += Render;
+
+            Run();
+        }
+
+        private void Initialize(object sender)
         {
             RenderingSystem.SetClearColour(Color.CornflowerBlue);
 
@@ -42,24 +46,24 @@ namespace GlumEngine2D
             mesh2d = new Mesh2D(vertices, indices);
         }
 
-        protected override void Update()
+        private void Update(object sender, GameUpdatedEventArgs args)
         {
             if(Input.GetKey(OpenTK.Input.Key.A))
             {
-                transform.Translate(-0.001f, 0);
+                transform.Translate(-2.0f * args.DeltaTime, 0);
                 //transform.Rotate(-0.01f);
                 //transform.Scale(-0.001f);
             }
 
             if (Input.GetKey(OpenTK.Input.Key.D))
             {
-                transform.Translate(0.001f, 0);
+                transform.Translate(2.0f * args.DeltaTime, 0);
                 //transform.Rotate(0.01f);
                 //transform.Scale(0.001f);
             }
         }
 
-        protected override void Render()
+        private void Render(object sender)
         {
             shader.Start();
             shader.LoadMatrix("transformationMatrix", transform.TransformationMatrix);

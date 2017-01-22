@@ -30,7 +30,7 @@ namespace GlumEngine2D
             Translate(translationFactor, translationFactor);
         }
         
-        public Transform(Vector2 position, Vector2 rotation)
+        public Transform(Vector2 position, float rotation)
         {
             Position = position;
             Rotation = rotation;
