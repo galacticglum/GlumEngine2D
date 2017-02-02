@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenTK;
 using OpenTK.Graphics.OpenGL4;
 
 namespace GlumEngine2D
@@ -20,8 +15,7 @@ namespace GlumEngine2D
             iboID = GL.GenBuffer();
             size = indices.Length;
 
-            float[] data = Vertex.Process(vertices);
-
+            float[] data = Vertex.GetData(vertices);
             GL.BindBuffer(BufferTarget.ArrayBuffer, vboID);
             GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(data.Length * sizeof(float)), data, BufferUsageHint.StaticDraw);
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
@@ -34,9 +28,11 @@ namespace GlumEngine2D
         public void Draw()
         {
             GL.EnableVertexAttribArray(0);
+            GL.EnableVertexAttribArray(1);
 
             GL.BindBuffer(BufferTarget.ArrayBuffer, vboID);
-            GL.VertexAttribPointer(0, Vertex.Size, VertexAttribPointerType.Float, false, Vertex.Size * 4, 0);
+            GL.VertexAttribPointer(0, 2, VertexAttribPointerType.Float, false, 4 * sizeof(float), 0);
+            GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 4 * sizeof(float), 2 * sizeof(float));
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
 
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, iboID);
@@ -44,6 +40,7 @@ namespace GlumEngine2D
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
 
             GL.DisableVertexAttribArray(0);
+            GL.DisableVertexAttribArray(1);
         }
     }
 }

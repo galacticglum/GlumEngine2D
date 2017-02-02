@@ -8,6 +8,7 @@ namespace GlumEngine2D
     public class TestGame : Game
     {
         private Mesh2D mesh2d;
+        private Sprite sprite;
         private Shader shader;
         private Transform transform;
 
@@ -31,10 +32,10 @@ namespace GlumEngine2D
             Vertex[] vertices = 
             {
                 // Sector 1
-                new Vertex(-0.5f, 0.5f),   // 0
-                new Vertex(-0.5f, -0.5f),  // 1
-                new Vertex(0.5f, -0.5f),   // 2
-                new Vertex(0.5f, 0.5f),    // 3
+                new Vertex(-0.5f, 0.5f, 0, 0),   // 0
+                new Vertex(-0.5f, -0.5f, 0, 1),  // 1
+                new Vertex(0.5f, -0.5f, 1, 1),   // 2
+                new Vertex(0.5f, 0.5f, 1, 0),    // 3
             };
 
             int[] indices = 
@@ -44,6 +45,7 @@ namespace GlumEngine2D
             };
 
             mesh2d = new Mesh2D(vertices, indices);
+            sprite = Resources.Load<Sprite>("Resources/Images/fatcat.png");
         }
 
         private void Update(object sender, GameUpdatedEventArgs args)
@@ -67,6 +69,7 @@ namespace GlumEngine2D
         {
             shader.Start();
             shader.LoadMatrix("transformationMatrix", transform.TransformationMatrix);
+            sprite.Texture.Bind(0);
             mesh2d.Draw();
             shader.Stop();
         }

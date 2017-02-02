@@ -35,3 +35,5 @@ C:\Users\greg4\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D
 C:\Users\greg4\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\bin\Debug\Resources\Shaders\vertex.glsl
 C:\Users\greg4\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\bin\Debug\GlumEngine2D.exe
 C:\Users\greg4\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\bin\Debug\GlumEngine2D.pdb
+C:\Users\greg4\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\bin\Debug\OpenTK.dll
+C:\Users\greg4\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\bin\Debug\Resources\Images\fatcat.png

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenTK.Graphics.OpenGL4;
+﻿using OpenTK.Graphics.OpenGL4;
 using System.Drawing;
 
 namespace GlumEngine2D
@@ -13,6 +8,7 @@ namespace GlumEngine2D
         public static void Initialize(float red = 0.0f, float green = 0.0f, float blue = 0.0f, float alpha = 0.0f)
         {
             GL.Enable(EnableCap.DepthTest);
+            GL.Enable(EnableCap.Texture2D);
         }
 
         public static void SetClearColour(float red = 0.0f, float green = 0.0f, float blue = 0.0f, float alpha = 0.0f)
