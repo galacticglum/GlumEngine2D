@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace GlumEngine2D
 {
-    public class Input
+    public static class Input
     {
         // Key Lists
         private static readonly List<Key> currentKeys = new List<Key>();
@@ -144,7 +144,7 @@ namespace GlumEngine2D
         public static Vector2 GetMousePosition()
         {
             // Return our mouse position in the form of a Vector2
-            return new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
+            return new Vector2(Game.Instance.Mouse.X, Game.Instance.Mouse.Y);
         }
 
         public static void SetMousePosition(Vector2 position)
