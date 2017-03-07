@@ -30,10 +30,10 @@ C:\Users\yoni\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\
 C:\Users\greg4\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\bin\Debug\GlumEngine2D.exe.config
 C:\Users\greg4\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\obj\Debug\GlumEngine2D.exe
 C:\Users\greg4\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\obj\Debug\GlumEngine2D.pdb
-C:\Users\greg4\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\obj\Debug\GlumEngine2D.csprojResolveAssemblyReference.cache
 C:\Users\greg4\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\bin\Debug\Resources\Shaders\fragment.glsl
 C:\Users\greg4\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\bin\Debug\Resources\Shaders\vertex.glsl
 C:\Users\greg4\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\bin\Debug\GlumEngine2D.exe
 C:\Users\greg4\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\bin\Debug\GlumEngine2D.pdb
 C:\Users\greg4\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\bin\Debug\OpenTK.dll
 C:\Users\greg4\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\bin\Debug\Resources\Images\fatcat.png
+C:\Users\greg4\Documents\GalacticGlum\Videos\Tutorials\GlumEngine2D\GlumEngine2D\GlumEngine2D\bin\Debug\Resources\Images\hoboish.jpg

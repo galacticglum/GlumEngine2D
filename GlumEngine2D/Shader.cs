@@ -31,11 +31,6 @@ namespace GlumEngine2D
             CompileShader();
         }
 
-        ~Shader()
-        {
-            GL.DeleteProgram(programID);
-        }
-
         private void AddShader(string fileName, ShaderType type)
         {
             string shader = ReadShader(fileName);
